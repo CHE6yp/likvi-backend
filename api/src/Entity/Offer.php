@@ -10,7 +10,6 @@ use ApiPlatform\Metadata\ApiProperty;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
-// use Symfony\Bridge\Doctrine\Types\UuidType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Event\PrePersistEventArgs;
 
@@ -97,7 +96,7 @@ class Offer
     private ?array $imagesList = null;
     
     #[ORM\Column(nullable: true)]
-    private ?bool $inStock = null;
+    private ?string $inStock = null;
     
     #[ORM\Column(nullable: true)]
     private ?bool $isRedirectPhone = null;
@@ -473,12 +472,12 @@ class Offer
         return $this;
     }
 
-    public function getInStock(): ?bool
+    public function getInStock(): ?string
     {
         return $this->inStock;
     }
 
-    public function setInStock(?bool $inStock): Offer
+    public function setInStock(?string $inStock): Offer
     {
         $this->inStock = $inStock;
         return $this;
