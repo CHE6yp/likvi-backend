@@ -6,7 +6,9 @@ namespace App\Entity;
 
 // use App\Component\Car\Entity\Offer\Source;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
@@ -16,6 +18,36 @@ use Doctrine\ORM\Event\PrePersistEventArgs;
 #[ApiResource]
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
+#[ApiFilter(SearchFilter::class, properties: [
+        'address' => 'partial',
+        'bodyType' => 'exact',
+        'chatOnly' => 'exact',
+        'city' => 'exact',
+        'color' => 'exact',
+        'equipment' => 'exact',
+        'condition' => 'exact',
+        'configuration' => 'exact',
+        'custom' => 'exact',
+        'damaged' => 'exact',
+        'displacement' => 'exact',
+        'doorsCount' => 'exact',
+        'driveType' => 'exact',
+        'engineType' => 'exact',
+        'exchange' => 'exact',
+        'generation' => 'exact',
+        'horsePower' => 'exact',
+        'inStock' => 'exact',
+        'mark' => 'exact',
+        'model' => 'exact',
+        'noAccidents' => 'exact',
+        'stateNotBeaten' => 'exact',
+        'transmission' => 'exact',
+        'warranty' => 'exact',
+        'wheel' => 'exact',
+        'year' => 'exact',
+        'source' => 'exact'
+    ])
+]
 class Offer
 {
 
@@ -908,9 +940,9 @@ enum Source: int
     final public const AUTORU_ALIAS = 'autoru';
     final public const AVITORU_ALIAS = 'avito';
 
-    case DROMRU = 1;
+    case AUTORU = 1;
     case AVITORU = 2;
-    case AUTORU = 3;
+    case DROMRU = 3;
 
     public static function fromAlias(string $alias): self
     {
