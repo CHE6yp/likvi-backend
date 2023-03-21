@@ -49,7 +49,7 @@ use Doctrine\ORM\Event\PrePersistEventArgs;
         'source' => 'exact'
     ])
 ]
-#[ApiFilter(RangeFilter::class, properties: ['price'])]
+#[ApiFilter(RangeFilter::class, properties: ['price', 'year'])]
 class Offer
 {
 
