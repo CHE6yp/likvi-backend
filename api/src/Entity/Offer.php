@@ -9,6 +9,7 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 use Symfony\Component\Uid\Uuid;
@@ -48,6 +49,7 @@ use Doctrine\ORM\Event\PrePersistEventArgs;
         'source' => 'exact'
     ])
 ]
+#[ApiFilter(RangeFilter::class, properties: ['price'])]
 class Offer
 {
 
@@ -191,7 +193,7 @@ class Offer
     private ?string $prepWheel = null;
     
     #[ORM\Column(nullable: true)]
-    private ?string $price = null;
+    private ?int $price = null;
     
     #[ORM\Column(nullable: true)]
     private ?string $pts = null;
@@ -735,12 +737,12 @@ class Offer
         return $this;
     }
 
-    public function getPrice(): ?string
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(?string $price): Offer
+    public function setPrice(?int $price): Offer
     {
         $this->price = $price;
         return $this;

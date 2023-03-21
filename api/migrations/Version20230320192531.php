@@ -67,7 +67,7 @@ final class Version20230320192531 extends AbstractMigration
             prep_seller_type VARCHAR(255) DEFAULT NULL,
             prep_transmission VARCHAR(255) DEFAULT NULL,
             prep_wheel VARCHAR(255) DEFAULT NULL,
-            price VARCHAR(255) DEFAULT NULL,
+            price INT DEFAULT NULL,
             pts VARCHAR(255) DEFAULT NULL,
             region VARCHAR(255) DEFAULT NULL,
             section VARCHAR(255) DEFAULT NULL,
